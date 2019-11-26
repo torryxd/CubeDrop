@@ -7,7 +7,7 @@ public class CamShakeSimple : MonoBehaviour
     {
         Vector3 originalPosition = transform.position;
         float elapsed = 0f;
-        
+
         while (elapsed < duration)
         {
             float x = Random.Range(-1f, 1f) * magnitude;

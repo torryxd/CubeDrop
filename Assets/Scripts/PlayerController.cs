@@ -30,12 +30,14 @@ public class PlayerController : MonoBehaviour
 	private Vector2 groundCheckPos;
 	private Vector2 pos;
     private KeyCode[] wasd;
+	private Animator anim;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
 		gc = GameObject.FindObjectOfType<GameController>();
+		anim = this.GetComponent<Animator>();
 
         scaleX = this.transform.localScale.x;
         defaultGravity = rb.gravityScale;
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
 		
         groundCheckPos = new Vector2(pos.x, pos.y+groundCheckOffSet);
 		grounded = Physics2D.OverlapCircle(groundCheckPos, groundCheckRadius, whatIsGround);
+		anim.SetBool("air", !grounded);
 
         if (Input.GetKey(wasd[1]) && !Input.GetKey(wasd[3])) {
 			this.transform.localScale = new Vector2(-scaleX,this.transform.localScale.y);
@@ -64,16 +67,10 @@ public class PlayerController : MonoBehaviour
 
 		if(grounded){
 			if (Input.GetKeyDown(wasd[1])){
-				Collider2D[] cols = Physics2D.OverlapCircleAll(new Vector2(pos.x-0.5f, pos.y), 0.1f, whatCanHit);
-				for(int i = 0; i < cols.Length; i++)
-					cols[i].gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-hitForce, 10));
-				Debug.Log("A" + cols.Length);
+				golpearBloque(true);
 			}
 			if(Input.GetKeyDown(wasd[3])){
-				Collider2D[] cols = Physics2D.OverlapCircleAll(new Vector2(pos.x+0.5f, pos.y), 0.1f, whatCanHit);
-				for(int i = 0;i < cols.Length;i++)
-					cols[i].gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(hitForce,10));
-				Debug.Log("D" + cols.Length);
+				golpearBloque(false);
 			}
 
 			if (Input.GetKeyDown(wasd[0]) && Time.timeScale > 0) {
@@ -107,6 +104,7 @@ public class PlayerController : MonoBehaviour
 		if (Mathf.Abs(rb.velocity.x) > maxSpeed) {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
         }
+		anim.SetFloat("speed", (Mathf.Abs(rb.velocity.x)));
     }
     
     void OnCollisionEnter2D(Collision2D col) {
@@ -133,7 +131,19 @@ public class PlayerController : MonoBehaviour
 			this.transform.position = new Vector2(0,10);
         }
     }
-
+	
+	void golpearBloque(bool leftRight) {
+		Collider2D[] cols = Physics2D.OverlapCircleAll(new Vector2(pos.x+(0.5f*(leftRight?-1:1)), pos.y), 0.1f, whatCanHit);
+		for(int i = 0;i < cols.Length;i++){
+			cols[i].gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(hitForce*(leftRight?-1:1),10));
+			
+			anim.ResetTrigger("kick");
+			anim.SetTrigger("kick");
+		}
+		
+		Debug.Log((leftRight?"D":"A") + cols.Length);
+	}
+	
 	void OnDrawGizmos() {
 		Gizmos.DrawSphere(new Vector2(pos.x, pos.y-0.75f), 0.2f);
 	}

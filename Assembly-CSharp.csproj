@@ -60,10 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Destroy.cs" />
     <Compile Include="Assets\Scripts\CamShakeSimple.cs" />
     <Compile Include="Assets\Scripts\canvasController.cs" />
     <Compile Include="Assets\Scripts\DDOL.cs" />
+    <Compile Include="Assets\Scripts\Destroy.cs" />
     <Compile Include="Assets\Scripts\DestroyAt.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\MatadorDeRocas.cs" />

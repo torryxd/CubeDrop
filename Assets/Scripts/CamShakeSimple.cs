@@ -3,7 +3,12 @@ using System.Collections;
 
 public class CamShakeSimple : MonoBehaviour
 {
-    public IEnumerator Shake(float magnitude, float duration)
+	public void Shake(float magnitude, float duration){
+		StartCoroutine(Freeze());
+		StartCoroutine(justShake(magnitude, duration));
+	}
+
+    public IEnumerator justShake(float magnitude, float duration)
     {
         Vector3 originalPosition = transform.position;
         float elapsed = 0f;
@@ -18,5 +23,19 @@ public class CamShakeSimple : MonoBehaviour
             yield return 0;
         }
         transform.position = originalPosition;
+    }
+
+	public IEnumerator Freeze()
+    {
+		int frames = 2;
+		while (frames > 0) {
+            Camera.main.clearFlags = CameraClearFlags.Nothing;
+            yield return null;
+            Camera.main.cullingMask = 0;
+            frames--;
+        }
+ 
+        Camera.main.clearFlags = CameraClearFlags.SolidColor;
+        Camera.main.cullingMask = ~0;
     }
 }

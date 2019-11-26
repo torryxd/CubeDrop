@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
         if ((Input.GetKeyDown(wasd[2])||Input.GetKeyDown(wasd[4])) && gc.coolDown[ID] > chargeCoolDown && !Physics2D.OverlapCircle(new Vector2(pos.x, pos.y-0.75f), 0.2f, whatIsGround)) {
             Instantiate(rockOJB, new Vector2(pos.x, pos.y-0.85f), this.transform.rotation);
-			StartCoroutine(gc.gameObject.GetComponent<CamShakeSimple>().Shake(0.05f, 0.05f));
+			gc.gameObject.GetComponent<CamShakeSimple>().Shake(0.05f, 0.05f);
             gc.coolDown[ID] -= chargeCoolDown;
         }
 

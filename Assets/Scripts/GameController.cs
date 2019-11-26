@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
 			players[toPerson].gameObject.GetComponent<PlayerController>().DEAD = true;
 			players[toPerson].gameObject.SetActive(false);
 			Instantiate(effXpl, players[toPerson].transform.position, transform.rotation);
-			StartCoroutine(this.GetComponent<CamShakeSimple>().Shake(0.45f, 0.225f));
+			this.GetComponent<CamShakeSimple>().Shake(0.45f, 0.225f);
 
 			int remain = 0;
 			foreach(GameObject p in players){

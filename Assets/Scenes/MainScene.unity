@@ -1353,7 +1353,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  effXpl: {fileID: 1586713398613751774, guid: d29b71f12eb908a41b9240bff419e0a0, type: 3}
+  effXpl: {fileID: 2210032664506873218, guid: d29b71f12eb908a41b9240bff419e0a0, type: 3}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

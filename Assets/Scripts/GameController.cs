@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public GameObject[] huds;
 	public float[] coolDown;
 	public GameObject effXpl;
+	public GameObject deadPlayer;
 	private int roundWinner = -1;
 	private DDOL ddol;
 
@@ -57,6 +58,11 @@ public class GameController : MonoBehaviour
 			players[toPerson].gameObject.SetActive(false);
 			Instantiate(effXpl, players[toPerson].transform.position, transform.rotation);
 			this.GetComponent<CamShakeSimple>().Shake(0.45f, 0.225f);
+			
+			GameObject deadP = Instantiate(deadPlayer, players[toPerson].transform.position, deadPlayer.transform.rotation);
+			deadP.transform.localScale = players[toPerson].transform.localScale;
+			deadP.GetComponent<Animator>().SetTrigger("dead_" + toPerson);
+			deadP.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 150));
 
 			int remain = 0;
 			foreach(GameObject p in players){

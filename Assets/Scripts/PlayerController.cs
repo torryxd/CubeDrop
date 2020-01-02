@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int ID = 0;
-	public bool DEAD = false;
     public float moveForce = 10f;
     public float maxSpeed = 20f;
 	[Range(0.9f, 1f)] public float moveFriction = 0.9f;

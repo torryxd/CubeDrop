@@ -53,8 +53,7 @@ public class GameController : MonoBehaviour
     }
 	
     public void kill(int toPerson) {
-		if(!players[toPerson].gameObject.GetComponent<PlayerController>().DEAD){
-			players[toPerson].gameObject.GetComponent<PlayerController>().DEAD = true;
+		if(players[toPerson].gameObject.activeSelf){
 			players[toPerson].gameObject.SetActive(false);
 			Instantiate(effXpl, players[toPerson].transform.position, transform.rotation);
 			this.GetComponent<CamShakeSimple>().Shake(0.45f, 0.225f);
@@ -89,14 +88,12 @@ public class GameController : MonoBehaviour
 	public void setSlider(int ID, float val, float over){
 		huds[ID].GetComponent<Slider>().value = val/over;
 	}
-
+	
 	public void setPlayers(){
-		for(int i = 0; i < players.Length; i++){
+		for(int i = 0; i < players.Length; i++){//error
 			if(ddol.playerEnabled[i]){
-				players[i].gameObject.GetComponent<PlayerController>().DEAD = false;
 				players[i].gameObject.SetActive(true);
 			}else{
-				players[i].gameObject.GetComponent<PlayerController>().DEAD = true;
 				players[i].gameObject.SetActive(false);
 			}
 		}	

@@ -40,8 +40,10 @@ public class canvasController : MonoBehaviour
 	
 	public void Restart(){
 		Application.LoadLevel("SelectScene");
-		for(int i = 0; i < 4; i++){
-			ddol.score[i] = 0;	
+
+		for(int i = 0; i < 4; i++){ //Reset all variables players
+			ddol.playerEnabled[i] = false;
+			ddol.score[i] = 0;
 		}
 	}
 

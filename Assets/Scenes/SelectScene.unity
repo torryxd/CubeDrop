@@ -235,7 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 2
-  DEAD: 0
   moveForce: 2250
   maxSpeed: 4
   moveFriction: 0.92
@@ -246,7 +245,7 @@ MonoBehaviour:
   jumpForce: 600
   grosorCap: 0
   rockOJB: {fileID: 3045245304736076255, guid: 9d135fa2daf64d44ba5f1c44be694100, type: 3}
-  chargeCoolDown: 2
+  chargeCoolDown: 1
   chargeNum: 2
   groundCheckOffSet: -0.2
   whatIsGround:
@@ -1874,7 +1873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  DEAD: 0
   moveForce: 2250
   maxSpeed: 4
   moveFriction: 0.92
@@ -1885,7 +1883,7 @@ MonoBehaviour:
   jumpForce: 600
   grosorCap: 0
   rockOJB: {fileID: 3045245304736076255, guid: 9d135fa2daf64d44ba5f1c44be694100, type: 3}
-  chargeCoolDown: 2
+  chargeCoolDown: 1
   chargeNum: 2
   groundCheckOffSet: -0.2
   whatIsGround:
@@ -2123,7 +2121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 3
-  DEAD: 0
   moveForce: 2250
   maxSpeed: 4
   moveFriction: 0.92
@@ -2134,7 +2131,7 @@ MonoBehaviour:
   jumpForce: 600
   grosorCap: 0
   rockOJB: {fileID: 3045245304736076255, guid: 9d135fa2daf64d44ba5f1c44be694100, type: 3}
-  chargeCoolDown: 2
+  chargeCoolDown: 1
   chargeNum: 2
   groundCheckOffSet: -0.2
   whatIsGround:
@@ -4316,7 +4313,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
-  DEAD: 0
   moveForce: 2250
   maxSpeed: 4
   moveFriction: 0.92
@@ -4327,7 +4323,7 @@ MonoBehaviour:
   jumpForce: 600
   grosorCap: 0
   rockOJB: {fileID: 3045245304736076255, guid: 9d135fa2daf64d44ba5f1c44be694100, type: 3}
-  chargeCoolDown: 2
+  chargeCoolDown: 1
   chargeNum: 2
   groundCheckOffSet: -0.2
   whatIsGround:

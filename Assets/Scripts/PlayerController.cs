@@ -91,7 +91,9 @@ public class PlayerController : MonoBehaviour
         }
 
         if (gc.coolDown[ID] <= (chargeCoolDown * chargeNum)){
-            gc.coolDown[ID] += Time.deltaTime;
+			if(grounded){//
+				gc.coolDown[ID] += Time.deltaTime;
+			}
 			gc.setSlider(ID, gc.coolDown[ID], chargeCoolDown * chargeNum);
 		}
 
